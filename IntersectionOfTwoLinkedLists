@@ -1,0 +1,31 @@
+# Leetcode link
+# https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+# Definition for singly-linked list.
+def __init__(self, x):
+    self.val = x
+    self.next = None
+
+def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+    # use two pointers traversing through both linked lists checking if the addresses
+    # are the same
+    # when you get to the end of one list, start on the next one
+
+    if headA == None or headB == None:
+        return None
+
+    p1 = headA
+    p2 = headB
+
+    while p1 != p2:
+        if p1 == None:
+            p1 = headB
+        else:
+            p1 = p1.next
+
+        if p2 == None:
+            p2 = headA
+        else:
+            p2 = p2.next
+
+    return p1

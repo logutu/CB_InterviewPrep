@@ -1,33 +1,38 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+# https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
-class Solution:
-    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
-        # use two pointers
+#Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
-        # temp = head
-        # while temp != None:
-        #     print(temp.val)
-        #     temp = temp.next
+def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    # use two pointers; one is always n steps ahead of the other
+    # when pt1 is at the end of the linked list, pt2 is on the node right before
+    # the nth Node
+    # adjust pt2.next = pt2.next.next
 
-        #Initializing values
-        dh = ListNode('dummy')
-        dh.next = head
+    # temp = head
+    # while temp != None:
+    #     print(temp.val)
+    #     temp = temp.next
 
-        temp = head
+    #Initializing values
+    dh = ListNode('dummy')
+    dh.next = head
 
-        for i in range(n):
-            temp = temp.next
-        pt2 = head
+    temp = head
 
-        while temp.next != None:
-            temp = temp.next
-            pt2 = pt2.next
+    # walk temp n steps ahead
+    for i in range(n):
+        temp = temp.next
+    pt2 = head
 
-        # remove the next node from pointer 2
-        pt2.next = pt2.next.next
+    while temp.next != None:
+        temp = temp.next
+        pt2 = pt2.next
 
-        return head
+    # remove the next node from pointer 2
+    pt2.next = pt2.next.next
+
+    return head

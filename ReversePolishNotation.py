@@ -2,6 +2,7 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         # read in string upto the operator; evaluate two numbers before it
         # append sln to the list in place and keep doing the same until the end
+        # use stack to make it easier to pop and add elements
 
         valid_ops = ['+', '-', '*', '/']
 
